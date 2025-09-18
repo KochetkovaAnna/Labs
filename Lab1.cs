@@ -9,9 +9,9 @@
         Author = author;
         Year = year;
     }
-    public void Info()
+    public override string ToString()
     {
-        Console.WriteLine("Печатное издание '{0}' (автор {1}) {2} года", Title, Author, Year);
+        return $"Печатное издание '{Title}' (автор {Author}) {Year} года";
     }
 }
 class Book : Edition
@@ -26,9 +26,9 @@ class Book : Edition
 class Journal : Edition
 {
     public Journal(string title, string author, int year) : base(title, author, year) { }
-    public void Info()
+    public override string ToString()
     {
-        Console.WriteLine("Журнал '{0}' {1} года", Title, Year);
+        return $"Журнал '{Title}' {Year} года";
     }
 }
 class StudentBook : Edition
@@ -38,9 +38,9 @@ class StudentBook : Edition
     {
         Subject = subject;
     }
-    public void Info()
+    public override string ToString()
     {
-        Console.WriteLine("Учебник '{0}' по предмету '{3}' (автор {1}) {2} года", Title, Author, Year, Subject);
+        return $"Учебник '{Title}' по предмету '{Subject}' (автор {Author}) {Year} года";
     }
 }
 class Program
@@ -48,13 +48,13 @@ class Program
     static void Main(string[] args)
     {
         Edition e = new Edition("Звезда", "Ю.Шатунов", 2000);
-        e.Info();
+        Console.WriteLine(e);
         Book b = new Book("Война и мир", "Л.Н.Толстой", 1869);
         Console.WriteLine(b);
         Journal j = new Journal("Телесемь", "", 2025);
-        j.Info();
+        Console.WriteLine(j);
         StudentBook s = new StudentBook("Геометрия 7-8 класс", "Л.С.Атасян", 2013, "Математика");
-        s.Info();
+        Console.WriteLine(s);
         Console.ReadLine();
     }
 }
